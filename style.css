@@ -1,0 +1,217 @@
+:root{
+    --primary: #fff;
+    --bg-color: rgb(5, 53, 61);
+    --bg-envelope-color: #f5edd1;
+    --envelope-tab: #ecdeb8;
+    --envelope-cover: #e6cfa7;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --txt-color: #444;
+    --heart-color: rgb(252, 8, 231);
+  }
+  body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Hide overflowing content */
+  }
+
+  .fancyfont {
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 15px;
+  }
+
+  .container {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: black;
+  }
+  .container > .envelope-wrapper {
+    z-index: 3;
+    height: 150px;
+    position: absolute;
+    background: var(--bg-envelope-color);
+    box-shadow: 0 0 40px var(--shadow-color);
+  }
+
+  .envelope-wrapper > .envelope {
+    z-index: 2;
+    position: relative;
+    width: 300px;
+    height: 230px;
+  }
+  
+  .flower {
+    z-index: 0;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    margin-left: -305px;
+    width: 100%;
+    margin-top: -280px;
+  }
+
+  .petal {
+    background: pink;
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    position: absolute;
+  }
+  
+  .core {
+    background: yellow;
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    position: absolute;
+  }
+  
+  .petal-1 {
+    margin-top: -30px;
+  }
+  
+  .petal-2 {
+    margin-left: -60px;
+    margin-top: -10px;
+  }
+  
+  .petal-3 {
+    margin-right: -60px;
+    margin-top: -10px;
+  }
+  
+  .petal-4 {
+    padding-top: 25px;
+    margin-left: -30px;
+    border-radius: 50px;
+  }
+  
+  .petal-5 {
+    padding-top: 25px;
+    margin-right: -30px;
+  }
+
+  .envelope-wrapper > .envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    
+    border-top: 130px solid var(--envelope-tab);
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
+    transform-origin: top;
+    transition: all 0.5s ease-in-out 0.7s;
+  }
+  .envelope-wrapper > .envelope::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    width: 0px;
+    height: 0px;
+    border-top: 130px solid transparent;
+    border-right: 150px solid var(--envelope-cover);
+    border-bottom: 100px solid var(--envelope-cover);
+    border-left: 150px solid var(--envelope-cover);
+  }
+  .envelope > .letter {
+    position: absolute;
+    right: 10%;
+    bottom: 0;
+    width: 74%;
+    height: 82%;
+    overflow: hidden;
+    background: var(--primary);
+    text-align: center;
+    transition: all 1s ease-in-out;
+    box-shadow: 0 0 5px var(--shadow-color);
+    padding: 20px 10px;
+  }
+  
+  .envelope > .letter > .text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--txt-color);
+    text-align: center;
+    font-size: 11px;
+  }
+  .heart {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: var(--heart-color);
+    z-index: 4;
+    transform: translate(-50%, -20%) rotate(45deg);
+    transition:ease-in-out .5s;
+    box-shadow: 0 1px 6px var(--shadow-color);
+    cursor: pointer;
+  }
+
+  .heart:hover{
+    position: absolute;
+    top: 75%;
+    left: 51%;
+    width: 15px;
+    height: 15px;
+    background: var(--heart-color);
+    z-index: 4;
+    transform: scale(1.2) translate(-50%, -20%) rotate(45deg);
+    transition:ease-in-out .5s;
+    box-shadow: 0 10px 15px var(--shadow-color);
+    cursor: pointer;
+  }
+  .heart:before, 
+  .heart:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--heart-color);
+    border-radius: 50%;
+  }
+  .heart:before {
+    top: -7.5px;
+  }
+  .heart:after {
+    right: 7.5px;
+  }
+  .flap > .envelope:before {
+    transform: rotateX(180deg);
+    z-index: 0;
+  }
+  .flap > .envelope > .letter {
+    bottom: 160px;
+    height: 300px;
+    transform: scaleY(1);
+    transition-delay: 1s;
+  }
+
+  .flap > .heart {
+    transform: rotate(90deg);
+    transition-delay: 0.4s;
+  }
+
+  .pic {
+    bottom: -100px;
+    z-index: 1;
+    position: absolute;
+    width: 120px;
+    left: -10px;
+    transition: all 1s ease-in-out;
+  }
+
+  .flap  > .pic {
+    bottom: -120px;
+    left: -100px;
+    width: 160px;
+    z-index: 2;
+    position: absolute;
+    transform: scaleY(1);
+    transition-delay: 1s;
+  }
